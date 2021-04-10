@@ -180,7 +180,7 @@ def creation_poet():
 
         if status is True:
             flash("Création d'une nouvelle notice réussie!", "success")
-            return redirect("/creation_status")
+            return redirect("/creation_statut")
         else:
             flash("La création d'une nouvelle notice a échoué pour les raisons suivantes:"+", ".join(data), "danger")
             return render_template("pages/creation_poet.html")
