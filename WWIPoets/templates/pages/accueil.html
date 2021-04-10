@@ -1,0 +1,18 @@
+{% extends "conteneur.html" %}
+{% block afternav %}
+    {% include "partials/recherche.html" %}
+{%endblock%}
+{% block corps %}
+
+<h1>Bienvenue !</h1>
+    {% if poetes %}
+    <p>{{poetes|length}} derniers poètes enregistrés :</p>
+        <ul>
+            {% for poete in poetes %}
+                <li><a href="{{url_for('notice', poet_id=poete.poet_id)}}">{{poete.poet_name}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+{% endblock %}

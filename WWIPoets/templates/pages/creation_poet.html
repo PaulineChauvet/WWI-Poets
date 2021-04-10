@@ -1,0 +1,84 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Création notice individuelle{%endblock%}
+
+{% block corps %}
+
+<div class="container">
+  <div class="col">
+<h1>Création d'une notice individuelle de poète</h1>
+  <p>Complétez le formulaire et cliquez sur "Créer" pour ajouter une nouvelle notice individuelle de poète. Tous les champs doivent être obligatoirement renseignés. En cas d'information manquante ou trop incertaine, indiquez "None".</p>
+</div>
+</div>
+<form class="container" method="POST" action="{{url_for("creation_poet")}}">
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="nom" class="col-lg-4 col-form-label">Nom</label>
+      <div class="col">
+        <input type="text" class="form-control" id="nom" name="nom">
+      </div>
+      </div>
+      <div class="form-group col">
+        <label for="prenom" class="col-lg-4 col-form-label">Prénom</label>
+      <div class="col">
+        <input type="text" class="form-control" id="prenom" name="prenom">
+      </div>
+      </div>
+    </div>
+        <div class="form-group row">
+      <div class="form-group col">
+        <label for="nationalite" class="col-lg-4 col-form-label">Nationalité</label>
+      <div class="col">
+        <input type="text" class="form-control" id="nationalite" name="nationalite" placeholder="ex: Française, Française par naturalisation, Suisse, etc.">
+      </div>
+      </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="date_naissance" class="col-lg-4 col-form-label">Date de naissance</label>
+      <div class="col">
+        <input type="text" class="form-control" id="date_naissance" name="date_naissance" maxlength="12" placeholder="00/00/0000">
+      </div>
+      </div>
+      <div class="form-group col">
+        <label for="date_deces" class="col-lg-4 col-form-label">Date de décès</label>
+      <div class="col">
+        <input type="text" class="form-control" id="date_deces" name="date_deces" maxlength="12" placeholder="00/00/0000">
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="lieu_naissance" class="col-lg-4 col-form-label">Lieu de naissance</label>
+      <div class="col">
+        <input type="text" class="form-control" id="lieu_naissance" name="lieu_naissance" placeholder="Entrez un nom de commune">
+      </div>
+      </div>
+    </div>
+        <div class="form-group row">
+      <div class="form-group col">
+        <label for="lieu_deces" class="col-lg-4 col-form-label">Lieu de décès</label>
+      <div class="col">
+        <input type="text" class="form-control" id="lieu_deces" name="lieu_deces" placeholder="Entrez un nom de commune">
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="description" class="col-lg-3 col-form-label">Présentation</label>
+      <div class="col">
+        <textarea class="form-control" name="description" id="description" placeholder="Entrez une présentation" rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+      <div class="form-group col">
+        <label for="nom" class="col-lg-3 col-form-label">Identifiant de notice</label>
+      <div class="col">
+        <input type="text" class="form-control" id="login_wiki" name="login_wiki" placeholder="Saisir un identifiant composé au maximum de 10 lettres et/ou de chiffres" maxlength="10">
+      </div>
+      </div>
+    </div>
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Créer</button>
+      </div>
+</form>
+{% endblock %}

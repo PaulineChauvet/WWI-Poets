@@ -1,0 +1,66 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if poete %}| Poete : {{poete.poet_name}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+<div><a href="{{url_for('index_individus')}}">Retour à l'index des individus</a></div>
+    {% if poete %}
+        <h1>{{poete.poet_name}}</h1>
+        <dl>
+            <dt>Prénom</dt><dd>{{poete.poet_firstname}}</dd>
+            <dt>Nationalité</dt><dd>{{poete.poet_country}}</dd>
+            <dt>Date de naissance</dt><dd>{{poete.poet_birthdate}}</dd>
+            <dt>Lieu de naissance</dt><dd>{{poete.poet_birthplace}}</dd>
+            <dt>Date de décès</dt><dd>{{poete.poet_deathdate}}</dd>
+            <dt>Lieu de décès</dt><dd>{{poete.poet_deathplace}}</dd>
+            <dt>Description</dt><dd>{{poete.poet_description}}</dd>
+        </dl>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+<dt>Publication(s) de guerre</dt>
+
+{% for lien in poetPublication %}
+ <dl>
+     <dd><i>{{lien.publication_titre}}</i>, {{lien.publication_date}}, {{lien.publication_genre_litteraire}}</dd>
+ </dl>
+   {% if current_user.is_authenticated %}
+  <div class="col-4">
+   <a href="{{ url_for("modification_publication", publication_id = lien.publication_id) }}" class="btn btn-danger" onclick="">Modifier la référence bibliographique</a>
+ </div>
+{% endif %}
+{%endfor%}
+<dt>Statut militaire</dt>
+{% for lien in poetStatus %}
+  <dl>
+      <dd>{{lien.military_status_statut}}</dd>
+     <dt>Grade</dt><dd>{{lien.military_status_grade}}</dd>
+     <dt>Registre matricule</dt><dd>{{lien.military_status_registre_matricule}}</dd>
+     <dt>Lieu recrutement</dt><dd>{{lien.military_status_lieu_recrutement}}</dd>
+    </dl>
+   {% if current_user.is_authenticated %}
+  <div class="col-4">
+   <a href="{{ url_for("modification_statut", military_status_id = lien.military_status_id) }}" class="btn btn-danger" onclick="">Modifier l'ESM</a>
+ </div>
+{% endif %}
+    {%endfor%}
+    {% if current_user.is_authenticated %}
+<div class="row mt-2">
+  <div class="col-4">
+   <a href="{{ url_for("modification_poet", poet_id = poete.poet_id) }}" class="btn btn-danger" onclick="">Modifier la notice</a>
+ </div>
+
+  <div class="col-4">
+   <a href="{{ url_for("suppression_poet", poet_id = poete.poet_id) }}" class="btn btn-danger" onclick="">Supprimer la notice</a>
+ </div>
+    </div>
+{% endif %}
+<div class="row mt-2">
+  <div class="col-4">
+    <a href="{{url_for('api_poets_single', poet_id=poete.poet_id)}}" class="btn btn-success">Extraire au format JSON</a>
+  </div>
+
+{% endblock %}
+

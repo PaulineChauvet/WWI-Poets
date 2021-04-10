@@ -1,0 +1,46 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| {{titre}}{%endblock%}
+
+{% block corps %}
+
+<h1>Index des oeuvres</h1>
+{% if oeuvres %}
+  <p>Il y a {{oeuvres.total}} oeuvres enregistrées :</p>
+  <ul>
+    {% for oeuvre in oeuvres.items %}
+      <li><a href="{{url_for('notice', poet_id=oeuvre.publication_poet_id)}}">{{oeuvre.publication_titre}}</a></li>
+    {% endfor %}
+  </ul>
+
+  <nav aria-label="research-pagination">
+    <ul class="pagination">
+      {% for page in oeuvres.iter_pages() %}
+      {% if page %}
+
+      {% if page != oeuvres.page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('index_publications', page=page) }}">{{page}}</a>
+      </li>
+      {% else %}
+      <li class="page-item active disabled">
+        <a class="page-link">{{page}} <span class="sr-only">(actuelle)</span></a>
+      </li>
+      {% endif %}
+
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link">...</a>
+      </li>
+      {% endif %}
+
+      {% endfor %}
+    </ul>
+  </nav>
+
+  {% else %}
+  <p>La base de données est en cours de constitution.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Modification d'une référence de publication{%endblock%}
+
+{% block corps %}
+
+<div class="container mb-5">
+  <div class="col">
+<h1>Modification d'une référence bibliographique</h1>
+  <p>Modifier le formulaire et cliquez sur "Modifier" pour modifier la notice. Tous les champs doivent être obligatoirement renseignés. En cas d'information manquante, indiquez "None".</p>
+</div>
+</div>
+
+<form class="container" method="POST" action="{{url_for("modification_publication", publication_id = publication.publication_id)}}">
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="titre" class="col-lg-4 col-form-label">Titre</label>
+          <div class="col">
+            <input type="text" class="form-control" id="titre" name="titre" value="{{publication.publication_titre }}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="date" class="col-lg-4 col-form-label">Date d'édition originale ou de production</label>
+          <div class="col">
+            <input type="text" class="form-control" id="date" name="date" maxlength="12" value="{{ publication.publication_date }}">
+          </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="genre_litteraire" class="col-lg-4 col-form-label">Genre littéraire</label>
+          <div class="col">
+            <input type="text" class="form-control" id="genre_litteraire" name="genre_litteraire" maxlength="12" value="{{publication.publication_genre_litteraire }}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+          <div class="form-group col">
+            <label for="login_wiki_pub" class="col-lg-3 col-form-label">Identifiant de la notice</label>
+          <div class="col">
+            <input type="text" class="form-control col-lg-4" id="login_wiki_pub" name="login_wiki_pub" maxlength="12" value={{publication.publication_external_login}}>
+          </div>
+          </div>
+    </div>
+
+   <!--Bouton modifier -->
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Modifier</button>
+      </div>
+</form>
+ <p><a href="{{url_for('index_publications')}}">Retour à l'index des oeuvres</a></p>
+{% endblock %}

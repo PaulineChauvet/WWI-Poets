@@ -1,0 +1,64 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Modification d'un ESM{%endblock%}
+
+{% block corps %}
+
+<div class="container mb-5">
+  <div class="col">
+<h1>Modification d'un état de service militaire (ESM)</h1>
+  <p>Modifier le formulaire et cliquez sur "Modifier" pour modifier la notice. Le statut militaire ainsi que l'identifiant de la notice doivent être obligatoirement renseignés. En cas d'information manquante sur le statut, indiquez "None".</p>
+</div>
+</div>
+
+<form class="container" method="POST" action="{{url_for("modification_statut", military_status_id = statut.military_status_id)}}">
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="statut" class="col-lg-4 col-form-label">statut</label>
+          <div class="col">
+            <input type="text" class="form-control" id="statut" name="statut" value="{{ statut.military_status_statut }}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="lieu_recrutement" class="col-lg-4 col-form-label">Lieu de recrutement</label>
+          <div class="col">
+            <input type="text" class="form-control" id="lieu_recrutement" name="lieu_recrutement" maxlength="12" value="{{ statut.military_status_lieu_recrutement}}">
+          </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="registre_matricule" class="col-lg-4 col-form-label">Registre matricule</label>
+          <div class="col">
+            <input type="text" class="form-control" id="registre_matricule" name="registre_matricule" maxlength="12" value="{{statut.military_status_registre_matricule}}">
+          </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="grade" class="col-lg-4 col-form-label">Grade</label>
+          <div class="col">
+            <input type="text" class="form-control" id="grade" name="grade" maxlength="12" value="{{statut.military_status_grade}}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+          <div class="form-group col">
+            <label for="login_wiki_esm" class="col-lg-3 col-form-label">Identifiant de la notice</label>
+          <div class="col">
+            <input type="text" class="form-control col-lg-4" id="login_wiki_esm" name="login_wiki_esm" maxlength="12" value={{statut.military_status_external_login}}>
+          </div>
+          </div>
+    </div>
+
+   <!--Bouton modifier -->
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Modifier</button>
+      </div>
+</form>
+{% endblock %}

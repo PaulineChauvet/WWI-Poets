@@ -1,0 +1,57 @@
+{% extends "conteneur.html" %}
+
+
+{% block titre %}| Création d'un ESM{%endblock%}
+
+{% block corps %}
+
+<div class="container">
+  <div class="col">
+<h1>Renseigner un état de situation militaire</h1>
+  <p>Complétez le formulaire et cliquez sur "Créer" pour ajouter l'état de situation militaire du poète. Vous devez renseigner au minimum le statut militaire. Si ce dernier vous est inconnu, revenez à l'accueil.</p>
+</div>
+</div>
+<form class="container" method="POST" action="{{url_for("creation_statut")}}">
+        <div class="form-group row">
+      <div class="form-group col">
+        <label for="statut" class="col-lg-4 col-form-label">Statut militaire</label>
+      <div class="col">
+        <input type="text" class="form-control" id="statut" name="statut" placeholder="Ex: Mobilisé, Engagé volontaire, Réformé, Dispensé pour raison d'âge, civil.">
+      </div>
+      </div>
+        </div>
+    <div class="form-group row">
+      <div class="form-group row">
+        <label for="lieu_recrutement" class="col-lg-4 col-form-label">Lieu de recrutement</label>
+      <div class="col">
+        <input type="text" class="form-control" id="lieu_recrutement" name="lieu_recrutement" maxlength="12" placeholder="Indiquez la commune de recrutement militaire">
+      </div>
+      </div>
+    </div>
+      <div class="form-group col">
+        <label for="registre_matricule" class="col-lg-4 col-form-label">Registre matricule</label>
+        <div class="col">
+        <input type="text" class="form-control" id="registre_matricule" name="registre_matricule" maxlength="12" placeholder="Indiquez le numéro de registre matricule">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="grade" class="col-lg-4 col-form-label">Grade</label>
+      <div class="col">
+        <input type="text" class="form-control" id="grade" name="grade" placeholder="Indiquez le grade si votre individu est mobilisé ou engagé volontaire">
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="login_wiki_esm" class="col-lg-3 col-form-label">Identifiant de l'esm</label>
+      <div class="col">
+        <input type="text" class="form-control" id="login_wiki_esm" name="login_wiki_esm" placeholder="Créer un identifiant composé au maximum de 10 lettres et/ou de chiffres" maxlength="10">
+      </div>
+      </div>
+    </div>
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Créer</button>
+      </div>
+</form>
+{% endblock %}

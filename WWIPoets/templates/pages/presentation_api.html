@@ -1,0 +1,19 @@
+{% extends "conteneur.html" %}
+{% block titre %}| Présentation de WWI-Poets{% endblock %}
+{% block corps %}
+<h1 class="mb-3">Contexte et fonctionnalités</h1>
+<p>WWI-Poets est une application reliée à une base de données relationnelle dont l'ambition est prosopographique. Elle est dédiée au recensement et à la présentation des poètes - contemporains ou non - de la Première Guerre mondiale, issus de toutes les nationalités belligérantes. Ce projet s'inspire du programme numérique Poésie-Grande Guerre (Université Paris Ouest-Nanterre la Défense), conçu en partie par l'auteure de cette application. Centrée sur les individus, elle répertorie également les productions dans un index dédié, chaque entrée renvoyant directement à la notice de poète dont elle est extraite. Chaque notice est structurée en trois champs distincts: </p>
+
+<ul>
+<li><strong>Les informations biographiques</strong></li>
+    <p>Un auteur est retenu quand il a publié de la poésie, avant, pendant ou après la Grande Guerre, à compte d’éditeur ou d’auteur, et que son oeuvre est relative - au moins partiellement - au conflit. Les individus ne sont pas tous des poètes de guerre au sens strict (poètes écrivant de la poésie de guerre) ni au sens que les Britanniques donnent à <i>war poet</i>. Ce principe de sélection permet d’inclure un grand nombre d’auteurs dont l’œuvre de guerre s’écrit surtout en prose, dans des correspondances ou dans des articles de périodiques. Leurs informations biographiques comprennent: le nom, le prénom, la date de naissance, le lieu de naissance, la nationalité, la date de décès, le lieu de décès ainsi qu'une présentation. </p>
+<li><strong>Les informations bibliographiques</strong></li>
+    <p>Les indications bibliographiques de chaque publication ou production écrite ont volontairement été restreintes au titre, à la date de première édition (ou de production originale), ainsi qu'au genre littéraire. Les informations sont en effet trop souvent manquantes concernant le lieu et la maison d'édition.</p>
+<li><strong>Les informations relatives à l'ESM (état de situation militaire)</strong></li>
+    <p>Les informations relatives à l'état de situation militaire d'un poète sont limitées: au statut militaire, au registre matricule, au grade et au lieu de recrutement pour les mobilisés et engagés volontaires.</p>
+</ul>
+
+<p>Votre <strong>recherche par mots-clés</strong> peut ainsi s'effectuer par (au choix): nom, prénom, date de naissance, date de décès, lieu de naissance, lieu de décès, statut militaire, grade, numéro de matricule, lieu de recrutement, titre de publication ou genre littéraire.</p>
+
+<p>Si vous êtes identifié(e) à l'aide d'un compte utilisateur, vous pouvez également ajouter de nouvelles notices individuelles, en modifier et en supprimer.</p>
+{% endblock %}

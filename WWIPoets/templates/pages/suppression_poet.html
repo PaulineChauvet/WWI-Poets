@@ -1,0 +1,35 @@
+{% extends "conteneur.html" %}
+{% block titre %}
+    {%if individu %}| Suppression d'un poète de la base {% endif %}
+{% endblock %}
+
+{% block corps %}
+<div class="mt-2 container">
+<div class="row">
+	<div class="col-md mt-3">
+			<p>Merci de confirmer la suppression de la notice suivante :</p>
+		</div>
+</div>
+	<div class="row">
+		<div class="col-md mt-3">
+			<strong>
+				<span class="mr-1">
+					{% if individu.poet_name %}{{individu.poet_name}}{% endif %}
+                    {% if individu.poet_firstname %}{{individu.poet_firstname}}{% endif %}
+				</span>
+			</strong>
+		</div>
+		<div class="col-md container mt-3">
+				<div class="row">
+				<form class="col-3 mr-2 " method="POST" action="{{url_for('suppression_poet', poet_id=individu.poet_id) }}">
+				<button type="submit" class="btn btn-success btn-sm">Confirmer</button>
+				</form>
+				<form class="col-3 ml-2" method="GET" action="{{ url_for('notice', poet_id=individu.poet_id) }}">
+				<button type="submit" class="btn btn-danger btn-sm">Annuler</button>
+			</form>
+		</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

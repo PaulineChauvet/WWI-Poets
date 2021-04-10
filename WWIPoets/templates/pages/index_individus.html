@@ -1,0 +1,46 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| {{titre}}{%endblock%}
+
+{% block corps %}
+
+<h1>Index des individus</h1>
+{% if personnes %}
+  <p>Il y a {{personnes.total}} personnes enregistrées :</p>
+  <ul>
+    {% for personne in personnes.items %}
+      <li><a href="{{url_for('notice', poet_id=personne.poet_id)}}">{{personne.poet_name}} {{personne.poet_firstname}} </a></li>
+    {% endfor %}
+  </ul>
+
+  <nav aria-label="research-pagination">
+    <ul class="pagination">
+      {% for page in personnes.iter_pages() %}
+      {% if page %}
+
+      {% if page != personnes.page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('index_individus', page=page) }}">{{page}}</a>
+      </li>
+      {% else %}
+      <li class="page-item active disabled">
+        <a class="page-link">{{page}} <span class="sr-only">(actuelle)</span></a>
+      </li>
+      {% endif %}
+
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link">...</a>
+      </li>
+      {% endif %}
+
+      {% endfor %}
+    </ul>
+  </nav>
+
+  {% else %}
+  <p>La base de données est en cours de constitution.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Création d'une notice bibliographique{%endblock%}
+
+{% block corps %}
+
+<div class="container">
+  <div class="col">
+<h1>Créer une notice bibliographique</h1>
+  <p>Complétez le formulaire et cliquez sur "Créer" pour ajouter une notice bibliographique inhérente à la production du poète que vous venez d'enregistrer. Vous devez renseigner au minimum le titre et la date de la première édition ou - si l'oeuvre n'a jamais été éditée - la date de production. Si ces derniers vous sont inconnus, revenez à l'accueil. Pour enregistrer plusieurs notices bibliographiques, remplissez ce formulaire pour chaque production.</p>
+</div>
+</div>
+<form class="container" method="POST" action="{{url_for("creation_publication")}}">
+        <div class="form-group row">
+      <div class="form-group col">
+        <label for="titre" class="col-lg-4 col-form-label">titre</label>
+      <div class="col">
+        <input type="text" class="form-control" id="titre" name="titre">
+      </div>
+      </div>
+        </div>
+    <div class="form-group row">
+      <div class="form-group row">
+        <label for="date" class="col-lg-4 col-form-label">date de publication originale ou de production</label>
+      <div class="col">
+        <input type="text" class="form-control" id="date" name="date" placeholder="année d'édition ou de production">
+      </div>
+      </div>
+    </div>
+      <div class="form-group col">
+        <label for="genre_litteraire" class="col-lg-4 col-form-label">Genre littéraire</label>
+        <div class="col">
+        <input type="text" class="form-control" id="genre_litteraire" name="genre_litteraire" maxlength="12" placeholder="Poésie/Prose/Correspondance/Article de périodique/Théâtre, etc.">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="login_wiki_pub" class="col-lg-3 col-form-label">Identifiant de la notice</label>
+      <div class="col">
+        <input type="text" class="form-control" id="login_wiki_pub" name="login_wiki_pub" placeholder="Créer un identifiant composé au maximum de 10 lettres et/ou de chiffres" maxlength="10">
+      </div>
+      </div>
+    </div>
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Créer</button>
+      </div>
+</form>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Modification de notice individuelle{%endblock%}
+
+{% block corps %}
+
+<div class="container mb-5">
+  <div class="col">
+<h1>Modification de notice individuelle</h1>
+  <p>Modifier le formulaire et cliquez sur "Modifier" pour modifier la notice. Tous les champs doivent être obligatoirement renseignés. En cas d'information manquante, indiquez "None".</p>
+</div>
+</div>
+
+<form class="container" method="POST" action="{{url_for("modification_poet", poet_id=poete_initial.poet_id)}}">
+
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="nom" class="col-lg-4 col-form-label">Nom</label>
+          <div class="col">
+            <input type="text" class="form-control" id="nom" name="nom" value="{{poete_initial.poet_name }}">
+          </div>
+      </div>
+
+
+      <div class="form-group col">
+            <label for="prenom" class="col-lg-4 col-form-label">Prénom</label>
+          <div class="col">
+            <input type="text" class="form-control" id="prenom" name="prenom" value="{{poete_initial.poet_firstname }}">
+          </div>
+      </div>
+
+
+      <div class="form-group col">
+            <label for="nationalite" class="col-lg-4 col-form-label">Nationalité</label>
+          <div class="col">
+            <input type="text" class="form-control" id="nationalite" name="nationalite" value="{{poete_initial.poet_country}}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="date_naissance" class="col-lg-4 col-form-label">Date de naissance</label>
+          <div class="col">
+            <input type="text" class="form-control" id="date_naissance" name="date_naissance" maxlength="12" value="{{poete_initial.poet_birthdate }}">
+          </div>
+      </div>
+      <div class="form-group col">
+            <label for="date_deces" class="col-lg-4 col-form-label">Date de décès</label>
+          <div class="col">
+            <input type="text" class="form-control" id="date_deces" name="date_deces" maxlength="12" value="{{poete_initial.poet_deathdate }}">
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="lieu_naissance" class="col-lg-4 col-form-label">Lieu de naissance</label>
+          <div class="col">
+            <input type="text" class="form-control" id="lieu_naissance" name="lieu_naissance" maxlength="12" value="{{poete_initial.poet_birthplace }}">
+          </div>
+      </div>
+      <div class="form-group col">
+            <label for="lieu_deces" class="col-lg-4 col-form-label">Lieu de décès</label>
+          <div class="col">
+            <input type="text" class="form-control" id="lieu_deces" name="lieu_deces" maxlength="12" value="{{poete_initial.poet_deathplace }}">
+          </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="form-group col">
+            <label for="description" class="col-lg-3 col-form-label">Description</label>
+          <div class="col">
+            <textarea type="text" class="form-control" name="description" id="description" rows="3">{{poete_initial.poet_description}}</textarea>
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+          <div class="form-group col">
+            <label for="login_wiki" class="col-lg-3 col-form-label">Identifiant de la notice</label>
+          <div class="col">
+            <input type="text" class="form-control col-lg-4" id="login_wiki" name="login_wiki" maxlength="12" value={{poete_initial.poet_external_login}}>
+          </div>
+          </div>
+    </div>
+
+   <!--Bouton modifier -->
+      <div class="form-group row">
+        <button type="submit" class="btn btn-secondary mx-auto" value="créer">Modifier</button>
+      </div>
+</form>
+ <p><a href="{{url_for('index_individus')}}">Retour à l'index des individus</a></p>
+{% endblock %}
