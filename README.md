@@ -15,7 +15,7 @@ WWI-Poets est une application (Python3) reliée à une base de données relation
 - Création et suppression de notices biographiques complètes de poètes (comprenant également la/les production(s) littéraire(s) et l'ESM)
 - Modifications ciblées en particulier sur la notice biographique, l'ESM et/ou la/les référence(s) bibliographique(s).
 
-# Installation
+## Installation
 
 ### Linux (Ubuntu/Debian)
 
