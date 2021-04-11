@@ -268,7 +268,7 @@ class Publication(db.Model):
     publication_genre_litteraire = db.Column(db.Text)
     publication_poet_id = db.Column(db.Integer, db.ForeignKey("Poet.poet_id"))
     publication_external_login=db.Column(db.Text)
-    #Jointures entre les tables Poet et Publication; ainsi qu'entre les tables Poet et Authorship_publication.
+    #Jointures entre les tables Poet et Publication; ainsi qu'entre les tables Publication et Authorship_publication.
     poetpub = db.relationship("Poet", foreign_keys=[publication_poet_id])
     authorships_pub = db.relationship("Authorship_publication", back_populates="pub", cascade="all, delete")
 
